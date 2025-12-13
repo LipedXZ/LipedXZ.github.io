@@ -1,3 +1,4 @@
+// Cursor
 const cursor = document.querySelector(".cursor");
 document.addEventListener("mousemove", e => {
   cursor.style.left = e.clientX + "px";
@@ -38,31 +39,47 @@ window.addEventListener('resize', () => {
   canvas.height = window.innerHeight;
 });
 
-// Buy system
-function buy(service, price, inputId) {
-  const username = document.getElementById(inputId).value.trim();
-  if (!username) {
-    const input = document.getElementById(inputId);
-    input.style.border = "2px solid red";
-    setTimeout(() => input.style.border = "none", 2000);
-    return;
-  }
+// Modal buy system
+let selectedService = '';
+let selectedPrice = '';
 
-  const links = {
-    "Discord Bot": "https://www.paypal.me/JustRandomDev/12.99EUR",
-    "Game Script": "https://www.paypal.me/JustRandomDev/15EUR",
-    "Random Script": "https://www.paypal.me/JustRandomDev/11EUR",
-    "Hire Me (Full-time)": "https://www.paypal.me/JustRandomDev/70EUR",
-    "Hire Me (Part-time)": "https://www.paypal.me/JustRandomDev/40EUR"
-  };
+function openModal(service, price) {
+  selectedService = service;
+  selectedPrice = price;
+  document.getElementById('modal-service').innerText = service;
+  document.getElementById('user-contact').value = '';
+  document.getElementById('modal').style.display = 'block';
+}
 
-  window.open(links[service], "_blank");
+function closeModal() {
+  document.getElementById('modal').style.display = 'none';
+}
 
-  fetch("YOUR_DISCORD_WEBHOOK_URL", {
+// Buy button in modal
+document.getElementById('modal-buy-btn').addEventListener('click', () => {
+  const contact = document.getElementById('user-contact').value.trim();
+  if (!contact) return alert("Please enter your contact info!");
+
+  // Send Discord webhook
+  fetch("https://discord.com/api/webhooks/1449459284709740545/xWFvYHVzlY9_Sq6VV5xqoRCL1nJw2cMneuEHbL33AW5-zdErKChgWl-Ct5KRHBJ_0v5_", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      content: `🛒 Order: ${service}\nPrice: €${price}\nDiscord Username: ${username}`
+      content: `🛒 Order: ${selectedService}\nPrice: €${selectedPrice}\nContact: ${contact}\nSend money to: alaakorj2007@gmail.com`
     })
   });
+
+  // Redirect to PayPal
+  const amount = selectedPrice;
+  const email = "alaakorj2007@gmail.com";
+  const paypalURL = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=${email}&currency_code=EUR&amount=${amount}&item_name=${selectedService}`;
+  window.open(paypalURL, "_blank");
+
+  closeModal();
+});
+
+// Close modal if clicked outside
+window.onclick = function(event) {
+  const modal = document.getElementById('modal');
+  if (event.target == modal) modal.style.display = "none";
 }
