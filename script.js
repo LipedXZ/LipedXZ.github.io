@@ -1,182 +1,54 @@
-/* Reset & base */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+// Cursor effect
+const cursor = document.querySelector(".cursor");
+document.addEventListener("mousemove", e => {
+  cursor.style.top = e.clientY + "px";
+  cursor.style.left = e.clientX + "px";
+});
+
+// Particle background
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+class Particle {
+  constructor() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.radius = Math.random() * 3 + 1;
+    this.speedX = (Math.random() - 0.5) * 1;
+    this.speedY = (Math.random() - 0.5) * 1;
+    this.color = "rgba(255,0,0,0.7)";
+  }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+    ctx.fillStyle = this.color;
+    ctx.fill();
+  }
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+    if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+    if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+    this.draw();
+  }
 }
 
-body {
-  display: flex;
-  min-height: 100vh;
-  overflow-x: hidden;
-  background: #1a1a1a;
-  color: white;
-  position: relative;
+const particlesArray = [];
+for (let i = 0; i < 100; i++) {
+  particlesArray.push(new Particle());
 }
 
-/* Sidebar */
-.sidebar {
-  width: 280px;
-  background: linear-gradient(180deg, #ff1f1f, #800000);
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particlesArray.forEach(p => p.update());
+  requestAnimationFrame(animate);
 }
+animate();
 
-.profile-pic {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  border: 3px solid #fff;
-  margin-bottom: 20px;
-}
-
-.sidebar h1 {
-  font-size: 1.8rem;
-  margin-bottom: 10px;
-  text-align: center;
-}
-
-.sidebar p {
-  font-size: 0.95rem;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.about h2 {
-  margin-top: 20px;
-  margin-bottom: 10px;
-  text-align: center;
-}
-
-.about p {
-  font-size: 0.9rem;
-  text-align: center;
-  line-height: 1.4;
-}
-
-/* Main content */
-.content {
-  flex: 1;
-  padding: 50px;
-  overflow-y: auto;
-}
-
-/* Services section */
-.services {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  justify-content: center;
-}
-
-.services h2 {
-  width: 100%;
-  text-align: center;
-  margin-bottom: 30px;
-  font-size: 2rem;
-  color: #ff4c4c;
-}
-
-.service-card {
-  background: rgba(255, 0, 0, 0.2);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  padding: 25px;
-  width: 250px;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.service-card:hover {
-  transform: scale(1.08);
-  box-shadow: 0 0 25px #ff0000;
-}
-
-.service-card h3 {
-  margin-bottom: 10px;
-  font-size: 1.3rem;
-}
-
-.service-card p {
-  margin-bottom: 10px;
-}
-
-.price {
-  font-weight: bold;
-  font-size: 1.1rem;
-}
-
-button {
-  padding: 10px 20px;
-  background: #ff0000;
-  border: none;
-  border-radius: 10px;
-  color: white;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-button:hover {
-  background: #ff4c4c;
-}
-
-/* Contact Section */
-.contact {
-  margin-top: 60px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.contact h2 {
-  font-size: 2rem;
-  color: #ff4c4c;
-  margin-bottom: 20px;
-}
-
-.contact-card {
-  background: linear-gradient(135deg, rgba(255,0,0,0.3), rgba(255,76,76,0.2));
-  backdrop-filter: blur(15px);
-  padding: 30px 40px;
-  border-radius: 20px;
-  text-align: center;
-  max-width: 400px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.contact-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 30px #ff0000;
-}
-
-.contact-card p {
-  margin: 10px 0;
-  font-size: 1rem;
-}
-
-/* Cursor */
-.cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 20px;
-  height: 20px;
-  background: rgba(255,0,0,0.7);
-  border-radius: 50%;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  transition: transform 0.1s ease;
-}
-
-/* Canvas for particles */
-#particles {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-}
+// Resize canvas
+window.addEventListener("resize", () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
