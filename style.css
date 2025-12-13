@@ -92,10 +92,9 @@ body {
 }
 
 .service-card {
-  width: 1200px; /* long horizontally */
-  max-width: 95%;
+  width: 90%; /* responsive width */
   background: rgba(255,0,0,0.15);
-  padding: 40px;
+  padding: 30px;
   border-radius: 25px;
   transition: 0.3s;
   overflow: hidden;
@@ -107,16 +106,16 @@ body {
 }
 
 .service-card h3 {
-  font-size: 2rem;
+  font-size: 1.8rem;
 }
 
 .service-card p {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   margin-top: 10px;
 }
 
 .price {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   font-weight: bold;
   margin-top: 15px;
   color: #ff4d4d;
