@@ -41,25 +41,28 @@ window.addEventListener('resize', () => {
 // Buy system
 function buy(service, price, inputId) {
   const username = document.getElementById(inputId).value.trim();
-  if(!username) return alert("Please enter your Discord username!");
+  if (!username) {
+    const input = document.getElementById(inputId);
+    input.style.border = "2px solid red";
+    setTimeout(() => input.style.border = "none", 2000);
+    return;
+  }
 
-  // Redirect to PayPal safely
-  const paypalLinks = {
-    "Discord Bot": "https://www.paypal.com/paypalme/YOURPAYPALME/12.99",
-    "Game Script": "https://www.paypal.com/paypalme/YOURPAYPALME/15.00",
-    "Random Script": "https://www.paypal.com/paypalme/YOURPAYPALME/11.00",
-    "Hire Me (Full-time)": "https://www.paypal.com/paypalme/YOURPAYPALME/70.00",
-    "Hire Me (Part-time)": "https://www.paypal.com/paypalme/YOURPAYPALME/40.00"
+  const links = {
+    "Discord Bot": "https://www.paypal.me/JustRandomDev/12.99EUR",
+    "Game Script": "https://www.paypal.me/JustRandomDev/15EUR",
+    "Random Script": "https://www.paypal.me/JustRandomDev/11EUR",
+    "Hire Me (Full-time)": "https://www.paypal.me/JustRandomDev/70EUR",
+    "Hire Me (Part-time)": "https://www.paypal.me/JustRandomDev/40EUR"
   };
 
-  window.open(paypalLinks[service], "_blank");
+  window.open(links[service], "_blank");
 
-  // Send info to Discord webhook
-  fetch("https://discord.com/api/webhooks/1449459284709740545/xWFvYHVzlY9_Sq6VV5xqoRCL1nJw2cMneuEHbL33AW5-zdErKChgWl-Ct5KRHBJ_0v5_", {
+  fetch("YOUR_DISCORD_WEBHOOK_URL", {
     method: "POST",
-    headers: {'Content-Type':'application/json'},
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      content: `🛒 **Order Received!**\nService: ${service}\nPrice: €${price}\nDiscord Username: ${username}`
+      content: `🛒 Order: ${service}\nPrice: €${price}\nDiscord Username: ${username}`
     })
   });
 }
