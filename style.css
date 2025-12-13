@@ -1,75 +1,40 @@
-/* Reset & base */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: Poppins, sans-serif;
 }
 
 body {
   display: flex;
+  background: #0b0b0b;
+  color: white;
   min-height: 100vh;
   overflow-x: hidden;
-  background: #1a1a1a;
-  color: white;
-  position: relative;
 }
 
-/* Animated gradient text */
-.animated-gradient {
-  background: linear-gradient(45deg, #ff0000, #ff4c4c, #ff8080, #ff1f1f);
-  background-size: 400% 400%;
+.gradient-text {
+  background: linear-gradient(45deg, #ff0000, #ff4d4d);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: textGradient 5s ease infinite;
 }
 
-@keyframes textGradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* Sidebar with animated gradient */
 .sidebar {
   width: 280px;
   padding: 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow-y: auto;
-  background: linear-gradient(270deg, #ff1f1f, #ff4c4c, #800000, #ff1f1f);
-  background-size: 800% 800%;
-  animation: gradientAnimation 15s ease infinite;
-  border-radius: 0 20px 20px 0;
+  background: linear-gradient(270deg, #5c0000, #aa0000);
 }
 
-@keyframes gradientAnimation {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* Profile picture hover gradient outline */
 .pfp-container {
-  border-radius: 50%;
   padding: 6px;
-  background: linear-gradient(45deg, #ff0000, #ff4c4c, #ff8080, #ff1f1f, #ff0000);
-  background-size: 400% 400%;
-  animation: pfpGradient 8s ease infinite;
-  display: inline-block;
-  transition: all 0.3s ease;
-}
-
-@keyframes pfpGradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  border-radius: 50%;
+  background: linear-gradient(45deg, red, darkred);
+  transition: 0.3s;
 }
 
 .pfp-container:hover {
-  filter: brightness(1.3);
-  transform: scale(1.08);
+  transform: scale(1.12);
+  box-shadow: 0 0 40px red;
 }
 
 .profile-pic {
@@ -78,132 +43,119 @@ body {
   border-radius: 50%;
 }
 
-.sidebar h1, .sidebar p {
-  text-align: center;
-}
-
-/* About section */
-.about h2, .contact h2 {
+.about, .contact {
   margin-top: 20px;
-  margin-bottom: 10px;
-  text-align: center;
 }
 
-.about p {
-  font-size: 0.95rem;
-  text-align: center;
-  line-height: 1.4;
-}
-
-/* Contact card with darker red background */
 .contact-card {
-  background: linear-gradient(135deg, rgba(120,0,0,0.7), rgba(180,0,0,0.5));
-  backdrop-filter: blur(18px);
-  padding: 25px;
-  border-radius: 20px;
-  width: 100%;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  margin-top: 10px;
-}
-
-.contact-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 30px #ff4c4c;
-}
-
-.contact-card p {
-  margin: 10px 0;
-  font-size: 1rem;
+  background: rgba(0,0,0,0.5);
+  padding: 15px;
+  border-radius: 15px;
   text-align: center;
 }
 
-/* Main content */
+.discord-btn {
+  margin: 15px auto 0;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff0000, #880000);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 15px red;
+  transition: 0.3s;
+}
+
+.discord-btn:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 40px red;
+}
+
+.discord-btn svg {
+  width: 28px;
+  fill: white;
+}
+
 .content {
   flex: 1;
-  padding: 50px;
+  padding: 40px;
   overflow-y: auto;
 }
 
-/* Services section vertical stack */
+/* Services section */
 .services {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.services h2 {
-  width: 100%;
-  text-align: center;
-  margin-bottom: 30px;
-  font-size: 2rem;
+  gap: 30px;
 }
 
 .service-card {
-  width: 90%;
-  max-width: 1200px;
-  background: rgba(255, 0, 0, 0.25);
-  backdrop-filter: blur(12px);
+  width: 1200px; /* long horizontally */
+  max-width: 95%;
+  background: rgba(255,0,0,0.15);
+  padding: 40px;
   border-radius: 25px;
-  padding: 40px 25px;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  margin-bottom: 30px;
+  transition: 0.3s;
+  overflow: hidden;
 }
 
 .service-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 40px #ff4c4c;
+  box-shadow: 0 0 50px red;
+  transform: scale(1.02);
 }
 
 .service-card h3 {
-  margin-bottom: 15px;
-  font-size: 1.8rem;
+  font-size: 2rem;
 }
 
 .service-card p {
-  margin-bottom: 15px;
   font-size: 1.2rem;
+  margin-top: 10px;
 }
 
 .price {
+  font-size: 1.6rem;
   font-weight: bold;
-  font-size: 1.4rem;
+  margin-top: 15px;
+  color: #ff4d4d;
+}
+
+/* PayPal inputs */
+.contact-input {
+  width: 100%;
+  padding: 12px;
+  margin: 15px 0;
+  border-radius: 12px;
+  border: none;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  font-size: 1rem;
 }
 
 .buy-btn {
-  padding: 12px 25px;
-  background: #ff0000;
+  background: linear-gradient(135deg, #ff0000, #880000);
   border: none;
-  border-radius: 12px;
+  padding: 14px 35px;
+  border-radius: 15px;
   color: white;
   cursor: pointer;
-  transition: background 0.3s ease;
+  font-size: 1.1rem;
+  transition: 0.3s;
 }
 
 .buy-btn:hover {
-  background: #ff4c4c;
+  transform: scale(1.1);
+  box-shadow: 0 0 25px red;
 }
 
-/* Cursor */
-.cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 20px;
-  height: 20px;
-  background: rgba(255,0,0,0.7);
-  border-radius: 50%;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  transition: transform 0.1s ease;
+/* Scrollbar */
+.content::-webkit-scrollbar {
+  width: 10px;
 }
 
-/* Canvas for particles */
-#particles {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
+.content::-webkit-scrollbar-thumb {
+  background: red;
+  border-radius: 5px;
 }
