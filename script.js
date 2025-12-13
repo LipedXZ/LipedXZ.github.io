@@ -38,9 +38,15 @@ function animate() {
 animate();
 
 let selectedItem = {};
-function openCheckout(name, price) {
+
+function openCheckout(name, price, info) {
   selectedItem = { name, price };
+  document.getElementById("checkoutInfo").innerText = info;
   document.getElementById("checkout").style.display = "flex";
+}
+
+function closeCheckout() {
+  document.getElementById("checkout").style.display = "none";
 }
 
 function checkout() {
@@ -49,6 +55,8 @@ function checkout() {
 
   document.getElementById("itemName").value = selectedItem.name;
   document.getElementById("itemAmount").value = selectedItem.price;
-  document.getElementById("discordHidden").value = discord;
+  document.getElementById("discordHidden").value =
+    discord + " | " + document.getElementById("extraInfo").value;
+
   document.getElementById("paypalForm").submit();
 }
