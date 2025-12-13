@@ -1,189 +1,125 @@
-/* General styles */
-body, html {
+* {
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', sans-serif;
-  overflow-x: hidden;
+  box-sizing: border-box;
+  font-family: Poppins, sans-serif;
+}
+
+body {
+  display: flex;
+  background: #0b0b0b;
   color: white;
-  background: #0a0000;
+  min-height: 100vh;
 }
 
-/* Cursor */
-.cursor {
-  position: fixed;
-  width: 20px;
-  height: 20px;
-  border: 2px solid red;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  z-index: 999;
+.gradient-text {
+  background: linear-gradient(45deg, #ff0000, #ff4d4d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-/* Sidebar */
 .sidebar {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 250px;
-  height: 100%;
-  background: linear-gradient(180deg, #330000, #660000);
-  padding: 20px;
-  overflow-y: auto;
+  width: 280px;
+  padding: 30px;
+  background: linear-gradient(270deg, #5c0000, #aa0000);
+}
+
+.pfp-container {
+  padding: 6px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, red, darkred);
+  transition: 0.3s;
+}
+
+.pfp-container:hover {
+  transform: scale(1.12);
+}
+
+.profile-pic {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+}
+
+.about, .contact {
+  margin-top: 20px;
+}
+
+.contact-card {
+  background: rgba(0,0,0,0.5);
+  padding: 15px;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.discord-btn {
+  margin: 15px auto 0;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff0000, #880000);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 15px red;
+  transition: 0.3s;
+}
+
+.discord-btn:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 40px red;
+}
+
+.discord-btn svg {
+  width: 28px;
+  fill: white;
+}
+
+.content {
+  flex: 1;
+  padding: 40px;
+}
+
+.services {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.pfp-container {
-  border-radius: 50%;
-  padding: 5px;
-  background: linear-gradient(135deg, red, darkred);
-  transition: 0.3s;
-}
-
-.pfp-container:hover {
-  background: linear-gradient(135deg, #ff0000, #ff5555, #880000);
-}
-
-.profile-pic {
-  border-radius: 50%;
-  width: 120px;
-  height: 120px;
-  display: block;
-}
-
-/* Gradient text */
-.gradient-text {
-  background: linear-gradient(45deg, #ff0000, #ff5555);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* About */
-.about, .contact {
-  margin-top: 20px;
-  width: 100%;
-}
-
-/* Contact Discord icon */
-.discord-btn svg {
-  width: 30px;
-  height: 30px;
-  fill: #ff0000;
-  transition: transform 0.3s, fill 0.3s;
-}
-
-.discord-btn:hover svg {
-  transform: scale(1.3);
-  fill: #ff5555;
-}
-
-/* Main content */
-.content {
-  margin-left: 270px;
-  padding: 40px;
-}
-
-/* Services */
-.services {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
 .service-card {
-  background: linear-gradient(135deg, #330000, #660000);
-  padding: 20px;
-  border-radius: 20px;
-  display: flex;
-  flex-direction: column;
+  width: 90%;
+  max-width: 1100px;
+  background: rgba(255,0,0,0.2);
+  padding: 35px;
+  border-radius: 25px;
+  margin-bottom: 30px;
   transition: 0.3s;
 }
 
 .service-card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 0 25px red;
+  box-shadow: 0 0 40px red;
 }
 
-.buy-btn {
-  margin-top: 10px;
-  padding: 12px;
-  border-radius: 12px;
-  border: none;
-  background: linear-gradient(135deg, #ff0000, #880000);
-  color: white;
-  cursor: pointer;
-  transition: 0.3s;
+.price {
+  font-size: 1.4rem;
+  font-weight: bold;
 }
 
-.buy-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px red;
-}
-
-/* Modal */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 999;
-  left: 0;
-  top: 0;
+.contact-input {
   width: 100%;
-  height: 100%;
-  overflow: auto;
-  background: rgba(0,0,0,0.85);
-}
-
-.modal-content {
-  background: #1b0000;
-  margin: 10% auto;
-  padding: 30px;
-  border-radius: 20px;
-  width: 90%;
-  max-width: 500px;
-  text-align: center;
-  color: white;
-}
-
-.modal-content input {
-  width: 90%;
-  padding: 12px;
+  padding: 10px;
   margin: 15px 0;
-  border-radius: 12px;
+  border-radius: 10px;
   border: none;
   background: rgba(0,0,0,0.6);
   color: white;
-  font-size: 1rem;
 }
 
-.modal-content button {
-  background: linear-gradient(135deg, #ff0000, #880000);
+.buy-btn {
+  background: red;
   border: none;
   padding: 12px 30px;
-  border-radius: 15px;
+  border-radius: 12px;
   color: white;
   cursor: pointer;
-  font-size: 1rem;
-  transition: 0.3s;
-}
-
-.modal-content button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 25px red;
-}
-
-.close {
-  color: white;
-  float: right;
-  font-size: 2rem;
-  cursor: pointer;
-}
-
-/* Particles canvas */
-#particles {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1;
 }
