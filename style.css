@@ -32,17 +32,17 @@ body {
   height: 140px;
   border-radius: 50%;
   margin-bottom: 20px;
-  border: 3px solid #ff4d4d;
+  border: 3px solid #ff1a1a;
   transition: transform 0.3s, box-shadow 0.3s;
 }
 .profile-pic:hover {
   transform: scale(1.1) rotate(5deg);
-  box-shadow: 0 0 40px #ff4d4daa, 0 0 60px #ff7b7b55;
+  box-shadow: 0 0 50px #ff1a1aaa, 0 0 80px #ff4d4d55;
 }
 
 .sidebar h1 {
   margin-bottom: 10px;
-  background: linear-gradient(90deg,#ff4d4d,#ff99aa);
+  background: linear-gradient(90deg,#ff1a1a,#ff4d4d);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -51,14 +51,14 @@ body {
   font-size: 0.95rem;
   margin-bottom: 20px;
   color: #fff;
-  border-right: 2px solid #ff4d4d;
+  border-right: 2px solid #ff1a1a;
   white-space: nowrap;
   overflow: hidden;
 }
 
 /* About section under pic */
 .about-sidebar h2 { 
-  color: #ff4d4d; 
+  color: #ff1a1a; 
   margin-bottom: 10px; 
 }
 .about-sidebar p { line-height: 1.5; font-size: 0.95rem; }
@@ -69,41 +69,95 @@ body {
   padding: 50px;
 }
 
-/* Projects section */
-.projects h2 { 
+/* Pricing section */
+.pricing h2 { 
   font-size: 2.5rem; 
   margin-bottom: 40px; 
   text-align: center;
-  background: linear-gradient(90deg,#ff4d4d,#ff99aa,#ff4d4d);
+  background: linear-gradient(90deg,#ff1a1a,#ff4d4d,#ff1a1a);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.project-cards {
+.pricing-cards {
   display: flex;
   flex-direction: column;
   gap: 50px;
 }
 
-.project-card {
-  display: block;
+.pricing-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
   padding: 60px;
   background: linear-gradient(145deg, #2b0d0d, #3a0e0e);
   color: #fff;
-  text-decoration: none;
   border-radius: 20px;
-  text-align: center;
   font-size: 1.8rem;
   position: relative;
   overflow: hidden;
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.project-card::before {
+.pricing-card::before {
   content: "";
   position: absolute;
   top: 50%; left: 50%;
   width: 0; height: 0;
-  background: rgba(255,77,77,0.15);
-  tr
+  background: rgba(255,26,26,0.2);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  transition: width 0.6s ease, height 0.6s ease;
+  z-index: 0;
+}
+
+.pricing-card:hover::before {
+  width: 600px; height: 600px;
+}
+
+.pricing-card:hover {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 0 60px #ff1a1aaa, 0 0 90px #ff4d4d55;
+}
+
+.pricing-card span { position: relative; z-index: 2; transition: color 0.3s; }
+.pricing-card span.service:hover { color: #fff; }
+
+/* Fade-in animation for cards */
+.pricing-card { opacity: 0; transform: translateY(20px); animation: fadeIn 1s forwards; }
+@keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+
+/* Contact section */
+.contact h2 { 
+  font-size: 2rem; 
+  margin-bottom: 15px; 
+  background: linear-gradient(90deg,#ff1a1a,#ff4d4d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.contact p { font-size: 1.1rem; }
+
+/* Cursor */
+.cursor {
+  width: 25px;
+  height: 25px;
+  background: radial-gradient(circle, #ff1a1a, #ff4d4d);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: 0.05s linear;
+  z-index: 1000;
+}
+
+/* Scrollbar for sidebar */
+.sidebar::-webkit-scrollbar { width: 6px; }
+.sidebar::-webkit-scrollbar-thumb { background-color: #ff1a1a; border-radius: 3px; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sidebar { position: relative; width: 100%; height: auto; }
+  .content { margin-left: 0; padding: 20px; }
+  .pricing-cards { gap: 30px; }
+}
