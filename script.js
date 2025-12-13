@@ -15,9 +15,9 @@ class Particle {
   constructor() {
     this.x = Math.random() * canvas.width;
     this.y = Math.random() * canvas.height;
-    this.radius = Math.random() * 3 + 1;
-    this.speedX = (Math.random() - 0.5) * 1;
-    this.speedY = (Math.random() - 0.5) * 1;
+    this.radius = Math.random() * 3 + 1.5;
+    this.speedX = (Math.random() - 0.5) * 1.5;
+    this.speedY = (Math.random() - 0.5) * 1.5;
     this.color = "rgba(255,0,0,0.7)";
   }
   draw() {
@@ -36,7 +36,7 @@ class Particle {
 }
 
 const particlesArray = [];
-for (let i = 0; i < 100; i++) {
+for (let i = 0; i < 140; i++) {
   particlesArray.push(new Particle());
 }
 
