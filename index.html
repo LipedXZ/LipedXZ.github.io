@@ -8,9 +8,10 @@
 </head>
 <body>
 
-<!-- SIDEBAR -->
-<aside class="sidebar">
+<canvas id="particles"></canvas>
+<div class="cursor"></div>
 
+<aside class="sidebar">
   <div class="pfp-container">
     <img src="https://avatars.githubusercontent.com/u/249440397?v=4" class="profile-pic">
   </div>
@@ -29,76 +30,56 @@
 
   <section class="contact">
     <h2 class="gradient-text">Contact</h2>
-
     <div class="contact-card">
       <p>Discord</p>
-      <strong>@connektion</strong>
-
-      <!-- DISCORD ICON -->
-      <a href="https://discord.gg/nAmpAb2R7S" target="_blank" class="discord-btn">
-        <svg viewBox="0 0 245 240">
-          <path d="M104.4 104.4c-5.7 0-10.2 5-10.2 11.1 0 6.1 4.6 11.1 10.2 11.1 5.7 0 10.2-5 10.2-11.1 0-6.1-4.6-11.1-10.2-11.1zm36.2 0c-5.7 0-10.2 5-10.2 11.1 0 6.1 4.6 11.1 10.2 11.1 5.7 0 10.2-5 10.2-11.1 0-6.1-4.6-11.1-10.2-11.1z"/>
-          <path d="M189.5 20h-134C24.9 20 10 34.9 10 53.3v133.4C10 205.1 24.9 220 43.3 220h113.4l-5.3-18.5 12.8 11.9 12.1 11.2 21.5 19V53.3C197.8 34.9 182.9 20 164.5 20z"/>
-        </svg>
-      </a>
+      <strong class="gradient-text">@connektion</strong>
     </div>
   </section>
-
 </aside>
 
-<!-- MAIN CONTENT -->
 <main class="content">
-
   <section class="services">
     <h2 class="gradient-text">Services</h2>
 
-    <!-- SERVICE -->
+    <!-- DISCORD BOT -->
     <div class="service-card">
-      <h3>Discord Bot</h3>
+      <h3 class="gradient-text">Discord Bot</h3>
       <p>JavaScript / Python / C++</p>
-      <p class="price">€12.99</p>
+      <p class="price gradient-text">€12.99</p>
 
       <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
         <input type="hidden" name="cmd" value="_xclick">
         <input type="hidden" name="business" value="alaakorj2007@gmail.com">
-        <input type="hidden" name="item_name" value="Discord Bot Order">
+        <input type="hidden" name="item_name" value="Discord Bot">
         <input type="hidden" name="amount" value="12.99">
         <input type="hidden" name="currency_code" value="EUR">
-
         <input class="contact-input" type="text" name="custom" placeholder="Your Discord username" required>
-
-        <input type="hidden" name="return" value="https://discord.gg/nAmpAb2R7S">
-        <input type="hidden" name="cancel_return" value="https://discord.gg/nAmpAb2R7S">
-
         <button class="buy-btn">Buy Now</button>
       </form>
     </div>
 
+    <!-- GAME SCRIPT -->
     <div class="service-card">
-      <h3>Game Script</h3>
-      <p>Automation / logic</p>
-      <p class="price">€15</p>
+      <h3 class="gradient-text">Game Script</h3>
+      <p>Automation / Logic</p>
+      <p class="price gradient-text">€15</p>
 
       <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
         <input type="hidden" name="cmd" value="_xclick">
         <input type="hidden" name="business" value="alaakorj2007@gmail.com">
-        <input type="hidden" name="item_name" value="Game Script Order">
+        <input type="hidden" name="item_name" value="Game Script">
         <input type="hidden" name="amount" value="15">
         <input type="hidden" name="currency_code" value="EUR">
-
         <input class="contact-input" type="text" name="custom" placeholder="Your Discord username" required>
-
-        <input type="hidden" name="return" value="https://discord.gg/nAmpAb2R7S">
-        <input type="hidden" name="cancel_return" value="https://discord.gg/nAmpAb2R7S">
-
         <button class="buy-btn">Buy Now</button>
       </form>
     </div>
 
+    <!-- FULL TIME -->
     <div class="service-card">
-      <h3>Hire Me (Full Time)</h3>
+      <h3 class="gradient-text">Hire Me (Full Time)</h3>
       <p>Dedicated dev work</p>
-      <p class="price">€70</p>
+      <p class="price gradient-text">€70</p>
 
       <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
         <input type="hidden" name="cmd" value="_xclick">
@@ -106,20 +87,16 @@
         <input type="hidden" name="item_name" value="Full Time Hire">
         <input type="hidden" name="amount" value="70">
         <input type="hidden" name="currency_code" value="EUR">
-
         <input class="contact-input" type="text" name="custom" placeholder="Your Discord username" required>
-
-        <input type="hidden" name="return" value="https://discord.gg/nAmpAb2R7S">
-        <input type="hidden" name="cancel_return" value="https://discord.gg/nAmpAb2R7S">
-
         <button class="buy-btn">Hire</button>
       </form>
     </div>
 
+    <!-- PART TIME -->
     <div class="service-card">
-      <h3>Hire Me (Part Time)</h3>
+      <h3 class="gradient-text">Hire Me (Part Time)</h3>
       <p>Flexible dev work</p>
-      <p class="price">€40</p>
+      <p class="price gradient-text">€40</p>
 
       <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
         <input type="hidden" name="cmd" value="_xclick">
@@ -127,21 +104,13 @@
         <input type="hidden" name="item_name" value="Part Time Hire">
         <input type="hidden" name="amount" value="40">
         <input type="hidden" name="currency_code" value="EUR">
-
         <input class="contact-input" type="text" name="custom" placeholder="Your Discord username" required>
-
-        <input type="hidden" name="return" value="https://discord.gg/nAmpAb2R7S">
-        <input type="hidden" name="cancel_return" value="https://discord.gg/nAmpAb2R7S">
-
         <button class="buy-btn">Hire</button>
       </form>
     </div>
 
   </section>
 </main>
-
-<canvas id="particles"></canvas>
-<div class="cursor"></div>
 
 <script src="script.js"></script>
 </body>
