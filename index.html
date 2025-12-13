@@ -17,10 +17,9 @@
     
     <section class="about">
       <h2 class="gradient-text animated-gradient">About Me</h2>
-      <p>Just a casual dev messing around with code, bots, games, and random projects. bla bla idk 🤷‍♂️</p>
+      <p>Just a casual dev messing around with code, bots, scripts, and random projects. bla bla idk 🤷‍♂️</p>
     </section>
 
-    <!-- Contact under About Me -->
     <section class="contact">
       <h2 class="gradient-text animated-gradient">📬 Contact Me</h2>
       <div class="contact-card">
@@ -37,35 +36,75 @@
     <!-- Services Section -->
     <section class="services">
       <h2 class="gradient-text animated-gradient">💼 Services & Pricing</h2>
+      
       <div class="service-card">
         <h3>Discord Bot</h3>
         <p>JavaScript / Python / C++</p>
         <p class="price">$12.99</p>
-        <button>Buy Now</button>
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+          <input type="hidden" name="cmd" value="_xclick">
+          <input type="hidden" name="business" value="YOUR_PAYPAL_EMAIL">
+          <input type="hidden" name="item_name" value="Discord Bot">
+          <input type="hidden" name="amount" value="12.99">
+          <input type="hidden" name="currency_code" value="USD">
+          <input type="submit" value="Buy Now" class="buy-btn">
+        </form>
       </div>
+
       <div class="service-card">
         <h3>Game Script</h3>
         <p>Python / JS</p>
         <p class="price">$15</p>
-        <button>Buy Now</button>
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+          <input type="hidden" name="cmd" value="_xclick">
+          <input type="hidden" name="business" value="YOUR_PAYPAL_EMAIL">
+          <input type="hidden" name="item_name" value="Game Script">
+          <input type="hidden" name="amount" value="15">
+          <input type="hidden" name="currency_code" value="USD">
+          <input type="submit" value="Buy Now" class="buy-btn">
+        </form>
       </div>
+
       <div class="service-card">
         <h3>Random Script</h3>
         <p>Python / JS / C++</p>
         <p class="price">$11</p>
-        <button>Buy Now</button>
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+          <input type="hidden" name="cmd" value="_xclick">
+          <input type="hidden" name="business" value="YOUR_PAYPAL_EMAIL">
+          <input type="hidden" name="item_name" value="Random Script">
+          <input type="hidden" name="amount" value="11">
+          <input type="hidden" name="currency_code" value="USD">
+          <input type="submit" value="Buy Now" class="buy-btn">
+        </form>
       </div>
+
       <div class="service-card">
         <h3>Hire Me (Full-Time)</h3>
         <p>Full-Time Service</p>
         <p class="price">$70</p>
-        <button>Hire</button>
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+          <input type="hidden" name="cmd" value="_xclick">
+          <input type="hidden" name="business" value="YOUR_PAYPAL_EMAIL">
+          <input type="hidden" name="item_name" value="Hire Me Full-Time">
+          <input type="hidden" name="amount" value="70">
+          <input type="hidden" name="currency_code" value="USD">
+          <input type="submit" value="Hire" class="buy-btn">
+        </form>
       </div>
+
       <div class="service-card">
         <h3>Hire Me (Part-Time)</h3>
         <p>Part-Time Service</p>
         <p class="price">$40</p>
-        <button>Hire</button>
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+          <input type="hidden" name="cmd" value="_xclick">
+          <input type="hidden" name="business" value="YOUR_PAYPAL_EMAIL">
+          <input type="hidden" name="item_name" value="Hire Me Part-Time">
+          <input type="hidden" name="amount" value="40">
+          <input type="hidden" name="currency_code" value="USD">
+          <input type="submit" value="Hire" class="buy-btn">
+        </form>
       </div>
     </section>
   </main>
