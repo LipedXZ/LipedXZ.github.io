@@ -14,7 +14,7 @@ function resize() {
 resize();
 addEventListener("resize", resize);
 
-const particles = Array.from({ length: 140 }, () => ({
+const particles = Array.from({ length: 120 }, () => ({
   x: Math.random() * canvas.width,
   y: Math.random() * canvas.height,
   dx: (Math.random() - 0.5) * 0.6,
@@ -36,3 +36,19 @@ function animate() {
   requestAnimationFrame(animate);
 }
 animate();
+
+let selectedItem = {};
+function openCheckout(name, price) {
+  selectedItem = { name, price };
+  document.getElementById("checkout").style.display = "flex";
+}
+
+function checkout() {
+  const discord = document.getElementById("discordInput").value;
+  if (!discord) return;
+
+  document.getElementById("itemName").value = selectedItem.name;
+  document.getElementById("itemAmount").value = selectedItem.price;
+  document.getElementById("discordHidden").value = discord;
+  document.getElementById("paypalForm").submit();
+}
